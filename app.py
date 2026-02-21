@@ -13,7 +13,7 @@ load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
 
 st.set_page_config(
-    page_title="Ing. Condoi - UCE",
+    page_title="Ing. GEO - UCE",
     page_icon="🦅",
     layout="wide"
 )
@@ -30,8 +30,7 @@ if not os.path.exists(PDF_FOLDER):
 
 # --- RECURSOS GRÁFICOS ---
 LOGO_URL = "UCELOGO.png"
-AVATAR_URL = "avatar_uce.gif"
-AVATAR_URL_GESTION = "avatar_uce2.gif"
+AVATAR_URL = "GEO.png"
 
 # --- 2. FUNCIONES DE LÓGICA (Backend) ---
 
@@ -173,7 +172,7 @@ def estilos_globales():
 
     <div class="footer-credits">
         <div style="font-weight: bold; color: #002F6C; font-size: 11px;">
-            Hecho por: Altamirano Isis, Castillo Alexander, Chalán David, Flores Bryan, Cabezas Jhampierre
+            Hecho por: Guevara Julián, Jácome Dayana, Lanchimba Michael, Pulamarin Lenin. 
         </div>
         <div style="font-size: 9px; color: #666;">
             Proyecto Académico | Powered by Google Gemini API
@@ -189,7 +188,7 @@ def sidebar_uce():
         st.markdown("### UCE - FICA")
         st.divider()
         st.title("Navegación")
-        opcion = st.radio("Ir a:", ["💬 Chat con Ing. Condoi", "📂 Gestión de Bibliografía"])
+        opcion = st.radio("Ir a:", ["💬 Chat con Ing. GEO", "📂 Gestión de Bibliografía"])
         st.divider()
         return opcion
 
@@ -205,15 +204,15 @@ def interfaz_gestor_archivos():
     col_avatar, col_contenido = st.columns([1, 3])
     
     with col_avatar:
-        if os.path.exists(AVATAR_URL_GESTION):
-            img_b64 = get_img_as_base64(AVATAR_URL_GESTION)
-            st.markdown(f'<img src="data:image/gif;base64,{img_b64}" style="width:100%; max-width: 300px;">', unsafe_allow_html=True)
-        elif os.path.exists(AVATAR_URL):
+        if os.path.exists(AVATAR_URL):
             img_b64 = get_img_as_base64(AVATAR_URL)
-            st.markdown(f'<img src="data:image/gif;base64,{img_b64}" style="width:100%; max-width: 300px;">', unsafe_allow_html=True)
+            st.markdown(
+                f'<img src="data:image/png;base64,{img_b64}" style="width:100%; max-width: 300px;">',
+                unsafe_allow_html=True
+            )
             
     with col_contenido:
-        st.info("Ayuda al Ing. Condoi a aprender subiendo los sílabos y libros aquí.") 
+        st.info("Ayuda al Ing. GEO a aprender subiendo los sílabos y libros aquí.") 
         st.markdown("---") 
         
         col1, col2 = st.columns([1, 2]) 
@@ -273,13 +272,13 @@ def interfaz_chat():
         with col_ht:
             st.markdown("""
                 <h2 style='margin-bottom: 0px; padding-top: 0px; color: #002F6C;'>💬 Asistente Virtual</h2>
-                <p style='margin-top: 0px; color: gray; font-size: 14px;'>Ing. Condoi - Tu Tutor Virtual de la FICA</p>
+                <p style='margin-top: 0px; color: gray; font-size: 14px;'>Ing. GEO - Tu Tutor Virtual de la FICA</p>
             """, unsafe_allow_html=True)
         
         # 2. BIENVENIDA (Siempre visible)
         st.markdown("""
         <div style="background-color: #f0f2f6; padding: 10px; border-radius: 5px; margin-bottom: 10px; font-size: 14px;">
-            <strong>🦅 ¡Hola compañero! Soy el Ing. Condoi.</strong><br>
+            <strong>🦅 ¡Hola compañero! Soy el Ing. GEO.</strong><br>
             Si quieres conversar sobre algún tema en general, ¡escribe abajo!
             Si necesitas que revise información específica, ve a <b>"Gestión de Bibliografía"</b> y dame los archivos.
         </div>
@@ -325,7 +324,7 @@ def interfaz_chat():
                         contexto_pdf = buscar_informacion(prompt, textos, fuentes)
                         
                         prompt_sistema = f"""
-                        Eres el **Ing. Condoi** (Tutor Virtual FICA - UCE).
+                        Eres el **Ing. GEO** (Tutor Virtual FICA - UCE).
                         Identidad: Profesional, amable, compañero universitario.
                         
                         CONTEXTO:
