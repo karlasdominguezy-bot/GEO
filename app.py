@@ -177,9 +177,8 @@ def interfaz_chat():
 
     with col_avatar_head:
         if os.path.exists(AVATAR_URL):
-            # Avatar GEO a la derecha de las letras
             st.markdown('<div style="margin-top: 10px;">', unsafe_allow_html=True)
-            st.image(AVATAR_URL, width=160)
+            st.image(AVATAR_URL, width=160) # Rectificado a 160
             st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown("---") 
